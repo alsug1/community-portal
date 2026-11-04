@@ -137,7 +137,7 @@ export default function SettingsPage() {
                 ))}
               </SelectContent>
             </Select>
-            <p className="text-xs text-muted-foreground">Event times are shown in this zone.</p>
+            <p className="text-xs text-muted-foreground">Times are shown in this zone.</p>
           </div>
         </div>
         <div className="mt-6">
@@ -179,7 +179,7 @@ export default function SettingsPage() {
       <SettingsSection title="Reset">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <p className="max-w-md text-xs text-muted-foreground">
-            Removes your saved items, course and event registrations, onboarding progress, and the
+            Removes your saved items, course registrations, onboarding progress, and the
             preferences above. This can&apos;t be undone.
           </p>
           <Button

@@ -12,7 +12,6 @@ import {
   GraduationCap,
   Code2,
   Handshake,
-  Trophy,
   LifeBuoy,
   Mail,
   CheckCircle2,
@@ -144,21 +143,13 @@ const NAV_GROUPS: NavGroup[] = [
       { label: "Demo Videos", href: "/sales-center/marketing-demos" },
     ],
   },
-  {
-    id: "community",
-    label: "Community Hub",
-    icon: Trophy,
-    landingHref: "/community-hub",
-    // Phase 2 (PRD COMM-01/02): Events lives here, not as its own top-level
-    // item. The Developer Forum is under Developer Hub.
-    roles: ALL_PARTNER_ROLES_AND_GUEST,
-    children: [
-      { label: "Events", href: "/events" },
-      // Solutions Showcasing (/forum/showcase) hidden per the Phase 2 PRD
-      // review — PRD P3-02. Page kept.
-      { label: "Leaderboard", href: "/community-hub/leaderboard" },
-    ],
-  },
+  // Community Hub (Events, Leaderboard) is built but intentionally hidden — unlinked
+  // here and everywhere else (2026-10-23). Pages stay in app/community-hub and
+  // app/events. To bring it back, restore this group:
+  //   { id: "community", label: "Community Hub", icon: Trophy, landingHref: "/community-hub",
+  //     roles: ALL_PARTNER_ROLES_AND_GUEST,
+  //     children: [{ label: "Events", href: "/events" },
+  //                { label: "Leaderboard", href: "/community-hub/leaderboard" }] },
 ];
 
 const ALL_SUBGROUP_IDS = NAV_GROUPS.flatMap((g) => g.children.filter(isSubGroup).map((e) => e.id));

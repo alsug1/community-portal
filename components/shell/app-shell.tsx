@@ -18,16 +18,13 @@ import { cn } from "@/lib/utils";
 const GUEST_BROWSE_TABS = [
   { href: "/resources", label: "Sales Resources" },
   { href: "/resources/knowledge-base", label: "Knowledge Base" },
-  // Events are public (PRD 8.1): logged-out visitors can browse them, but
-  // registering and commenting ask them to sign in (app/events/).
-  { href: "/events", label: "Events" },
+  // Events tab hidden along with the Community Hub (2026-10-23).
 ];
 
 function isGuestAccessiblePath(pathname: string) {
   return (
     pathname === "/" ||
     pathname.startsWith("/resources") ||
-    pathname.startsWith("/events") ||
     // Registration and password reset are for signed-out visitors by
     // definition.
     pathname.startsWith("/register") ||
@@ -94,7 +91,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   // gate, not a workspace — so it drops the sidebar and the signed-in-only
   // header controls (search, notifications) rather than reusing the shell.
   const isOnboarding = role === "onboarding";
-  const isGuestBrowsing = isOnboarding && (pathname.startsWith("/resources") || pathname.startsWith("/events"));
+  const isGuestBrowsing = isOnboarding && pathname.startsWith("/resources");
   // The sidebar being hidden only stops *navigation* into gated areas — a
   // direct URL (or a stale role after this page was already open) would
   // otherwise still render the real page underneath. Swap in the landing

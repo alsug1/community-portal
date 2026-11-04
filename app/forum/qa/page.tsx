@@ -22,60 +22,14 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { PageHero } from "@/components/page-hero";
-import { SectionHeading, SectionHeadingLink } from "@/components/section-heading";
 import { BookmarkButton } from "@/components/bookmark-button";
-import { useRole } from "@/components/shell/role-provider";
 import { FORUM_POSTS } from "@/lib/sample-data";
-import { MY_COMMUNITY_STATS, WEEKLY_LEADERBOARD } from "@/lib/community-data";
-import { ArrowUp, Search, Trophy } from "lucide-react";
+import { ArrowUp, Search } from "lucide-react";
 import { toast } from "sonner";
-import { cn } from "@/lib/utils";
-
-function HelpTheCommunityCard() {
-  return (
-    <Card className="shadow-card p-5">
-      <SectionHeading>Help the Community</SectionHeading>
-      <p className="text-2xl font-semibold text-foreground">
-        {MY_COMMUNITY_STATS.points.toLocaleString()} <span className="text-base font-normal">pts</span>
-      </p>
-      <p className="mt-1 text-xs text-muted-foreground">Your reputation this quarter</p>
-      <Button variant="outline" size="sm" className="mt-4 w-full" asChild>
-        <Link href="/community-hub">View your profile</Link>
-      </Button>
-    </Card>
-  );
-}
-
-function WeeklyLeaderboardCard() {
-  return (
-    <Card className="shadow-card p-5">
-      <SectionHeading action={<SectionHeadingLink href="/community-hub/leaderboard" />}>
-        Leaderboard — Top Contributors (This Week)
-      </SectionHeading>
-      <div className="space-y-3">
-        {WEEKLY_LEADERBOARD.map((entry, i) => (
-          <div key={entry.name} className="flex items-center gap-2">
-            <Trophy className={i === 0 ? "size-4 shrink-0 text-emphasis-vivid" : "size-4 shrink-0 text-muted-foreground"} />
-            <span className="min-w-0 flex-1 truncate text-sm text-foreground">{entry.name}</span>
-            <span className="shrink-0 text-sm font-medium text-primary-vivid">
-              +{entry.weeklyPoints}
-            </span>
-          </div>
-        ))}
-      </div>
-    </Card>
-  );
-}
 
 export default function QAForumPage() {
-  const { role } = useRole();
   const [sort, setSort] = React.useState("top");
   const [query, setQuery] = React.useState("");
-  // Guests don't earn or see community reputation (see lib/community-data.ts
-  // and the Community Hub page's own guest state) — the widgets that
-  // reference it are hidden here rather than shown empty.
-  const showCommunityWidgets = role !== "guest";
-
   const posts = React.useMemo(() => {
     let list = [...FORUM_POSTS];
     if (query.trim()) {
@@ -106,12 +60,7 @@ export default function QAForumPage() {
         />
       </PageHero>
 
-      <div
-        className={cn(
-          "grid grid-cols-1 items-start gap-6",
-          showCommunityWidgets && "lg:grid-cols-[1fr_280px]"
-        )}
-      >
+      <div className="grid grid-cols-1 items-start gap-6">
         <div className="space-y-4">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
             <div className="relative flex-1">
@@ -187,13 +136,6 @@ export default function QAForumPage() {
             )}
           </div>
         </div>
-
-        {showCommunityWidgets && (
-          <div className="space-y-4">
-            <HelpTheCommunityCard />
-            <WeeklyLeaderboardCard />
-          </div>
-        )}
       </div>
     </div>
   );
