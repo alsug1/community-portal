@@ -91,7 +91,7 @@ export function OnboardingLanding() {
           width: "100vw",
           marginLeft: "calc(50% - 50vw)",
           marginRight: "calc(50% - 50vw)",
-          background: "linear-gradient(to bottom, var(--secondary) 0%, var(--canvas) 100%)",
+          background: "linear-gradient(to bottom, var(--hero-top) 0%, var(--canvas) 100%)",
         }}
       >
         <div className="mx-auto max-w-[1320px] px-6 md:px-10">

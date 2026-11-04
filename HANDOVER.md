@@ -46,18 +46,18 @@ actually needs it. As of 1.4.0 there are two: `vantiq-events.js` and
 
 ## Direct links (repo is public — pull from these, don't wait for a zip)
 
-`agvantiq/community-portal` is public, so these are safe to bookmark and
+`alsug1/community-portal` is public, so these are safe to bookmark and
 re-fetch any time instead of waiting on an email:
 
-- CSS: https://raw.githubusercontent.com/agvantiq/community-portal/master/public/handover/vantiq-portal.css
-- JS: https://raw.githubusercontent.com/agvantiq/community-portal/master/public/handover/vantiq-interface.js
-- Shell reference (view-source): https://github.com/agvantiq/community-portal/blob/master/public/handover/shell.html
-- Component reference (view-source): https://github.com/agvantiq/community-portal/blob/master/public/handover/handover.html
-- Login screens CSS: https://raw.githubusercontent.com/agvantiq/community-portal/master/public/handover/vantiq-login.css
-- Contact Support JS: https://raw.githubusercontent.com/agvantiq/community-portal/master/public/handover/vantiq-support.js
-- Contact Support form (view-source): https://github.com/agvantiq/community-portal/blob/master/public/handover/support-form.html
-- Changelog: https://github.com/agvantiq/community-portal/blob/master/public/handover/CHANGELOG.md
-- Whole folder: https://github.com/agvantiq/community-portal/tree/master/public/handover
+- CSS: https://raw.githubusercontent.com/alsug1/community-portal/master/public/handover/vantiq-portal.css
+- JS: https://raw.githubusercontent.com/alsug1/community-portal/master/public/handover/vantiq-interface.js
+- Shell reference (view-source): https://github.com/alsug1/community-portal/blob/master/public/handover/shell.html
+- Component reference (view-source): https://github.com/alsug1/community-portal/blob/master/public/handover/handover.html
+- Login screens CSS: https://raw.githubusercontent.com/alsug1/community-portal/master/public/handover/vantiq-login.css
+- Contact Support JS: https://raw.githubusercontent.com/alsug1/community-portal/master/public/handover/vantiq-support.js
+- Contact Support form (view-source): https://github.com/alsug1/community-portal/blob/master/public/handover/support-form.html
+- Changelog: https://github.com/alsug1/community-portal/blob/master/public/handover/CHANGELOG.md
+- Whole folder: https://github.com/alsug1/community-portal/tree/master/public/handover
 
 These `master` links always show the current version — that's a feature, not a
 risk, but it means "pull it" and "point the theme's `wp_enqueue_*` calls at

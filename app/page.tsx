@@ -200,7 +200,7 @@ export default function DashboardPage() {
               type="button"
               variant="link"
               onClick={() => setTourOpen(true)}
-              className="h-auto p-0 text-sm font-medium"
+              className="night-pill h-auto p-0 text-sm font-medium"
             >
               <RotateCcw className="size-4" />
               Replay guided tour

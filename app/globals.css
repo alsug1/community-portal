@@ -4,6 +4,7 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
+  --hero-top: var(--secondary);
   /* Community portal palette - light mode (primary theme). See /community.design.md */
   --background: #f3f8f7;
   --foreground: #0d3d3d;
@@ -67,9 +68,14 @@
 }
 
 .dark {
-  /* Community portal palette - dark mode. See /community.design.md */
-  --background: #0d3d3d;
-  --foreground: #e3efee;
+  /* Community portal palette - dark mode. See /community.design.md
+     2026-10-22: near-black teal surfaces (background #021315, card #051c1e,
+     sidebar #031719) and brighter text (foreground #f5fbfa) — the "night" look
+     first tried on the dashboard, now portal-wide. Cards separate from the page
+     by a soft translucent edge + top highlight (see .night-main below), not a
+     bright outline; that edge is decorative, so it is not held to 3:1. */
+  --background: #021315;
+  --foreground: #f5fbfa;
   /* Was #123f41 — only 1.03:1 against --background, and light mode's
      shadow-based "lifted" cue doesn't work here (dark-mode shadows are
      neutralized to black, which is invisible on an already-dark page — see
@@ -79,15 +85,15 @@
      --emphasis-vivid, --border) is tuned against THIS value, not just
      --background — moving --card requires re-deriving all four, since
      raising it shrinks their margin on the "text/border on card" side. */
-  --card: #164d50;
-  --card-foreground: #e3efee;
-  --popover: #164d50;
-  --popover-foreground: #e3efee;
+  --card: #051c1e;
+  --card-foreground: #f5fbfa;
+  --popover: #051c1e;
+  --popover-foreground: #f5fbfa;
   --primary: #1f7a7b;
   --primary-foreground: #ffffff;
   /* #1f7a7b (--primary) only clears AA (4.5:1) as a *fill* with white text on
      top — reused as a text/icon/border color against --background/--card it
-     measures ~2.3:1, well under WCAG 1.4.3. A single hue can't satisfy both
+     measures ~3:1, well under WCAG 1.4.3. A single hue can't satisfy both
      roles at once in dark mode (verified: brightening --primary itself to
      fix text contrast drops white-on-fill contrast below 4.5:1). This is a
      derivative of Stormy Teal for text/icon/border contexts — raised
@@ -95,51 +101,52 @@
      contrast but read as neon cyan rather than "stormy" — used via the
      text-primary-vivid / border-primary-vivid / ring-primary-vivid
      utilities and the global focus outline below.
-     #62c4c6: 5.84:1 on --background, 4.63:1 on --card. */
-  --primary-vivid: #62c4c6;
-  --secondary: #164f50;
-  --secondary-foreground: #e3efee;
-  --muted: #143f41;
+     #7fd6d8: 9.62:1 on --background, 8.3:1 on --card. */
+  --primary-vivid: #7fd6d8;
+  --secondary: #12494b;
+  --secondary-foreground: #f5fbfa;
+  --muted: #0b2a2c;
   /* #8797b2 (Lavender Grey, used verbatim) measures 3.92-4.05:1 against
      --background/--card — under WCAG 1.4.3's 4.5:1 for normal text, though
      this token is used at text-xs/text-sm throughout. Lightened along the
-     same hue: 6.06:1 on --background, 4.80:1 on --card. */
-  --muted-foreground: #afb9cb;
-  --accent: #1b5657;
-  --accent-foreground: #e3efee;
-  --destructive: #d9645d;
+     same hue (#cdd5e3): 10.94:1 on --background, 9.5:1 on --card. */
+  --muted-foreground: #cdd5e3;
+  --accent: #165456;
+  --accent-foreground: #f5fbfa;
+  --destructive: #ea8680; /* 5.5:1 on --card, 4.75:1 on a destructive/10 badge (was #d9645d, 3.95:1) */
   --destructive-foreground: #2a0e0c;
   /* Was #1d4f50 — 1.31:1 against --card, effectively invisible, and with
      dark-mode shadows neutralized to black (see --card above) this was the
      *only* card/module boundary cue and it wasn't working. Lightened to a
-     genuinely visible hairline: 4.17:1 on --background, 3.30:1 on --card. */
-  --border: #3da7a9;
-  --input: #163f41;
+     genuinely visible hairline: 5.6:1 on --background, 4.9:1 on --card
+     (after the 2026-10-22 darkening of the surfaces below). */
+  --border: rgb(150 235 235 / 0.14);
+  --input: #3a8c8e; /* form-control outlines + switch track: 3.6:1 on --card, 4.1:1 on --background; WCAG 1.4.11 needs 3:1 (was #0b3436, 1.04:1) */
   /* Focus rings are a contrast-critical UI indicator (WCAG 1.4.11, ≥3:1) —
      --primary fails that here for the same reason noted above, so this
      tracks --primary-vivid instead. */
-  --ring: #62c4c6;
+  --ring: #7fd6d8;
   --chart-1: #2e8c8d;
   --chart-2: #6e8fc4;
   --chart-3: #8797b2;
   --chart-4: #e0a559;
   --chart-5: #8c4a86;
-  --sidebar: #0a3233;
-  --sidebar-foreground: #e3efee;
+  --sidebar: #031719;
+  --sidebar-foreground: #f5fbfa;
   --sidebar-primary: #1f7a7b;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #1b5657;
-  --sidebar-accent-foreground: #e3efee;
-  --sidebar-border: #1a4b4c;
+  --sidebar-accent: #165456;
+  --sidebar-accent-foreground: #f5fbfa;
+  --sidebar-border: #2f7476; /* 3.3:1 on --sidebar (was 1.5:1) */
   --sidebar-ring: #1f7a7b;
 
-  --surface-elevated: #164d50;
-  --surface-sunken: #0a3233;
+  --surface-elevated: #0a2a2c;
+  --surface-sunken: #010f10;
   --success: #4caf6c;
   --success-foreground: #0c2415;
   --warning: #e0a559;
   --warning-foreground: #3d2408;
-  --info: #6e8fc4;
+  --info: #8aa9da; /* 5.9:1 on --card, 4.9:1 on an info/10 badge (was #6e8fc4, 4.26:1) */
   --info-foreground: #12233d;
   --critical: #8c4a86;
   --critical-foreground: #ffffff;
@@ -152,11 +159,15 @@
      lighter than teal did to clear 4.5:1 (magenta/violet hues carry less
      relative luminance per WCAG's formula at the same lightness), so this
      reads as a lighter orchid rather than a "dark" violet — that's the
-     necessary trade for legibility, not a design change. 6.10:1 on
-     --background, 4.83:1 on --card. */
-  --emphasis-vivid: #dea8d7;
+     necessary trade for legibility, not a design change. 10.46:1 on
+     --background, 9.1:1 on --card. */
+  --emphasis-vivid: #ecc4e6;
   --shadow-color: 0 0 0;
-  --canvas: var(--background);
+  --canvas: transparent; /* gradients only — fades hero plates out so the beam on <main> shows through */
+  /* Top stop of the hero/landing gradients (PageHero, onboarding, register, reset
+     password). Light mode keeps the Azure Mist plate; dark mode drops it because
+     the page itself now carries the teal light beam (.night-main below). */
+  --hero-top: transparent;
 }
 
 @theme inline {
@@ -273,6 +284,133 @@
     rgb(var(--shadow-color) / 0.04) 0px 6px 6px -3px,
     rgb(var(--shadow-color) / 0.04) 0px 12px 12px -6px,
     rgb(var(--shadow-color) / 0.04) 0px 24px 24px -12px;
+}
+
+/* ---------------------------------------------------------------------------
+   Night look (dark mode only) — portal-wide. <main> in AppShell carries
+   .night-main. Near-black teal canvas with a diagonal teal light beam at the top
+   of every page, very dark glassy cards (soft top highlight, translucent edge),
+   lighter inset tiles, glowing teal pill buttons and progress bars.
+   Colors all derive from the portal palette. Light mode is untouched.
+   --------------------------------------------------------------------------- */
+.dark .night-main {
+  background-color: var(--background);
+  background-image:
+    radial-gradient(70% 62% at 96% -6%, rgb(46 214 214 / 0.6) 0%, rgb(20 140 142 / 0.32) 38%, transparent 72%),
+    linear-gradient(205deg, rgb(60 214 214 / 0.2) 0%, rgb(30 150 152 / 0.08) 22%, transparent 46%),
+    radial-gradient(80% 60% at 0% 0%, rgb(15 90 91 / 0.28), transparent 70%);
+  background-size: 100% 640px;
+  background-repeat: no-repeat;
+  background-attachment: local;
+}
+.dark .night-main [data-slot="card"] {
+  border-radius: 1.25rem;
+  background:
+    linear-gradient(180deg, rgb(255 255 255 / 0.045) 0%, rgb(255 255 255 / 0) 42%),
+    var(--card);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.06),
+    0 22px 44px -28px rgb(0 0 0 / 0.9);
+}
+/* Cards that carry their own gradient wash (saved items, CTA tiles) become the lighter inset tile. */
+.dark .night-main [data-slot="card"][class*="bg-linear-to"] {
+  background:
+    linear-gradient(180deg, rgb(255 255 255 / 0.05) 0%, rgb(255 255 255 / 0) 60%),
+    var(--surface-elevated);
+  border-radius: 1rem;
+}
+.dark .night-main a:hover > [data-slot="card"],
+.dark .night-main a[data-slot="card"]:hover {
+  border-color: rgb(127 214 216 / 0.45);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.08),
+    0 0 0 1px rgb(127 214 216 / 0.12),
+    0 14px 36px -18px rgb(34 190 192 / 0.55);
+}
+/* Card-like boxes that are not <Card> (plain divs/links with their own classes) get the same
+   treatment so every page reads as one system:
+   - filled boxes (bg-card + border) take the card fill and top highlight;
+   - bare bordered rows/tiles (border border-border, no background of their own) get the
+     lighter solid tile fill, like the dashboard's Saved Items tiles. */
+.dark .night-main [class~="bg-card"][class~="border"][class*="rounded-"]:not([class~="rounded-full"]) {
+  background:
+    linear-gradient(180deg, rgb(255 255 255 / 0.045) 0%, rgb(255 255 255 / 0) 42%),
+    var(--card);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.06),
+    0 22px 44px -28px rgb(0 0 0 / 0.9);
+}
+.dark .night-main [class~="rounded-xl"][class~="bg-card"][class~="border"] {
+  border-radius: 1.25rem;
+}
+.dark .night-main [class~="border"][class~="border-border"][class*="rounded-"]:not([class*="bg-"]):not([class~="rounded-full"]):not([class*="border-dashed"]) {
+  background-color: var(--surface-elevated);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.05);
+}
+.dark .night-main [class~="border"][class~="border-border"][class*="rounded-"]:not([class*="bg-"]):not([class~="rounded-full"]):not([class*="border-dashed"]):is(a, button, [role="button"]):hover,
+.dark .night-main a:hover > [class~="border"][class~="border-border"][class*="rounded-"]:not([class*="bg-"]) {
+  background-color: #0f3639;
+  border-color: rgb(127 214 216 / 0.4);
+}
+/* Cards that opt out of the border (course cards: photo banner flush to the edge) still get the
+   translucent edge. An outline, drawn inside the box, paints over the photo; a border or inset
+   shadow would be hidden behind it. */
+.dark .night-main [data-slot="card"][class~="border-none"] {
+  outline: 1px solid var(--border);
+  outline-offset: -1px;
+}
+.dark .night-main a:hover > [data-slot="card"][class~="border-none"],
+.dark .night-main [data-slot="card"][class~="border-none"]:hover {
+  outline-color: rgb(127 214 216 / 0.45);
+}
+/* Gradient link tiles (Paths, Sales Hub, guest landing, KB "Get Started"): drop the gradient wash
+   for the solid tile fill with the same translucent edge as the cards. Tiles without a real border
+   get the edge as an inset ring so nothing shifts by a pixel. */
+.dark .night-main [class~="rounded-xl"][class*="bg-linear-to-br"] {
+  background:
+    linear-gradient(180deg, rgb(255 255 255 / 0.05) 0%, rgb(255 255 255 / 0) 60%),
+    var(--surface-elevated);
+  border-radius: 1.25rem;
+  box-shadow:
+    inset 0 0 0 1px var(--border),
+    inset 0 1px 0 rgb(255 255 255 / 0.06),
+    0 22px 44px -28px rgb(0 0 0 / 0.9);
+}
+.dark .night-main [class~="rounded-xl"][class*="bg-linear-to-br"][class~="border"] {
+  border-color: var(--border);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.06),
+    0 22px 44px -28px rgb(0 0 0 / 0.9);
+}
+.dark .night-main a[class~="rounded-xl"][class*="bg-linear-to-br"]:hover {
+  box-shadow:
+    inset 0 0 0 1px rgb(127 214 216 / 0.45),
+    inset 0 1px 0 rgb(255 255 255 / 0.08),
+    0 14px 36px -18px rgb(34 190 192 / 0.55);
+  opacity: 1;
+}
+/* Default (gradient) buttons: pill, lit from below. */
+.dark .night-main [data-slot="button"][class*="from-emphasis"],
+.dark .night-main .night-pill {
+  border-radius: 9999px;
+  border: 1px solid rgb(127 214 216 / 0.35);
+  background: linear-gradient(180deg, rgb(31 122 123 / 0.55), rgb(10 60 62 / 0.6));
+  box-shadow:
+    inset 0 -6px 12px -6px rgb(60 220 220 / 0.55),
+    0 8px 24px -12px rgb(34 190 192 / 0.6);
+}
+.dark .night-main .night-pill {
+  padding: 0.5rem 1.1rem;
+  text-decoration: none;
+}
+/* Progress fills glow. */
+.dark .night-main [data-slot="progress-indicator"],
+.dark .night-main [class*="rounded-full"][class*="bg-primary"][class*="transition-[width]"] {
+  background: linear-gradient(90deg, #1f7a7b, #5fe0e2);
+  box-shadow: 0 0 12px rgb(95 224 226 / 0.65);
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: rgb(150 235 235 / 0.3);
 }
 
 /* Whole-page celebration when a partner finishes every course in a tracked

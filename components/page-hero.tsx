@@ -62,7 +62,7 @@ export function PageHero({
         style={{
           left: `calc(0px - ${bleed})`,
           right: `calc(0px - ${bleed})`,
-          background: `linear-gradient(to bottom, var(--secondary) 0%, ${blendTo} 100%)`,
+          background: `linear-gradient(to bottom, var(--hero-top) 0%, ${blendTo} 100%)`,
         }}
       />
       <div
