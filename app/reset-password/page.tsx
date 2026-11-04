@@ -195,7 +195,7 @@ export default function ResetPasswordPage() {
         width: "100vw",
         marginLeft: "calc(50% - 50vw)",
         marginRight: "calc(50% - 50vw)",
-        background: "linear-gradient(to bottom, var(--secondary) 0%, var(--canvas) 55%)",
+        background: "linear-gradient(to bottom, var(--hero-top) 0%, var(--canvas) 55%)",
       }}
     >
       <div className="flex w-full max-w-[420px] flex-col">

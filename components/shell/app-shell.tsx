@@ -80,7 +80,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
             same max-width column) minus the sidebar/header — so PageHero's
             gradient and the page's white field read identically to every
             other portal page, just without the workspace chrome. */}
-        <main className="flex-1 overflow-x-hidden overflow-y-auto bg-white dark:bg-background">
+        <main className="flex-1 overflow-x-hidden overflow-y-auto bg-white dark:bg-background night-main">
           <div className="mx-auto max-w-[1320px] px-6 py-8 md:px-10 md:py-10">{children}</div>
         </main>
       </div>
@@ -109,7 +109,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           </div>
         )}
         <main
-          className="flex-1 overflow-x-hidden overflow-y-auto bg-white dark:bg-background"
+          className="flex-1 overflow-x-hidden overflow-y-auto bg-white dark:bg-background night-main"
           // PageHero reads these to bleed its background to this element's
           // true edges (see that component) — set here, once, rather than
           // hardcoded there, so it stays correct if the sidebar width

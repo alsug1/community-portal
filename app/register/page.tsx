@@ -137,7 +137,7 @@ export default function RegisterPage() {
         width: "100vw",
         marginLeft: "calc(50% - 50vw)",
         marginRight: "calc(50% - 50vw)",
-        background: "linear-gradient(to bottom, var(--secondary) 0px, var(--canvas) 480px)",
+        background: "linear-gradient(to bottom, var(--hero-top) 0px, var(--canvas) 480px)",
       }}
     >
       <Card className="shadow-card w-full max-w-lg p-6">
